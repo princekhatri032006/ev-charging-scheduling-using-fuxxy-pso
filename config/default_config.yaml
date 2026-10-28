@@ -1,0 +1,85 @@
+# Configuration for EV Charging Scheduling using PSO and Fuzzy Urgency Repair
+
+simulation:
+  horizon_hours: 12.0
+  slot_duration_hours: 0.25  # 15 minutes per slot -> 48 slots
+  default_num_evs: 20
+  default_station_capacity_kw: 50.0
+  lambda_unmet: 50.0         # Penalty weight in currency per unmet kWh
+  energy_tolerance_kwh: 0.01 # Threshold for considering an EV fully charged
+  numerical_tolerance: 1.0e-6
+
+# Default Time-of-Use pricing tiers (currency/kWh)
+pricing:
+  off_peak_price: 0.12
+  shoulder_price: 0.22
+  peak_price: 0.40
+  # Hour boundaries
+  off_peak_end_hour: 4.0
+  shoulder_1_end_hour: 7.0
+  peak_end_hour: 10.0
+
+# Fuzzy Urgency Repair parameters
+fuzzy_repair:
+  epsilon: 0.01  # Small constant to ensure non-zero urgency weighting
+  delta: 0.1     # Small constant allowing zero-request available EVs to receive leftover power
+
+# PSO Optimizer parameters
+pso:
+  swarm_size: 30
+  max_iterations: 50
+  inertia_weight: 0.7
+  cognitive_coefficient: 1.5
+  social_coefficient: 1.5
+  velocity_clamp: 5.0
+  random_seed: 42
+
+# Experimental Scenarios
+scenarios:
+  normal:
+    description: "Station capacity is generally sufficient to meet demand"
+    num_evs: 20
+    station_capacity_kw: 60.0
+    arrival_min_hours: 0.0
+    arrival_max_hours: 6.0
+    duration_min_hours: 4.0
+    duration_max_hours: 8.0
+    energy_min_kwh: 10.0
+    energy_max_kwh: 25.0
+    power_choices_kw: [6.6, 11.0, 22.0]
+
+  high_demand:
+    description: "High concurrency and elevated required energy"
+    num_evs: 20
+    station_capacity_kw: 50.0
+    arrival_min_hours: 1.0
+    arrival_max_hours: 5.0
+    duration_min_hours: 4.0
+    duration_max_hours: 7.0
+    energy_min_kwh: 25.0
+    energy_max_kwh: 40.0
+    power_choices_kw: [7.4, 11.0, 22.0]
+
+  tight_deadlines:
+    description: "EVs have short dwell times relative to required charging time"
+    num_evs: 20
+    station_capacity_kw: 50.0
+    arrival_min_hours: 0.0
+    arrival_max_hours: 7.0
+    duration_min_hours: 1.5
+    duration_max_hours: 3.0
+    energy_min_kwh: 15.0
+    energy_max_kwh: 30.0
+    power_choices_kw: [7.4, 11.0, 22.0]
+
+  limited_capacity:
+    description: "Station capacity is severely constrained"
+    num_evs: 20
+    station_capacity_kw: 25.0
+    arrival_min_hours: 0.0
+    arrival_max_hours: 6.0
+    duration_min_hours: 3.0
+    duration_max_hours: 7.0
+    energy_min_kwh: 15.0
+    energy_max_kwh: 30.0
+    power_choices_kw: [6.6, 11.0, 22.0]

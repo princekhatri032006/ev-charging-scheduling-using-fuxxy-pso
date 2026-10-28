@@ -1,0 +1,9 @@
+scenario,algorithm,num_runs,deadline_satisfaction_pct_mean,deadline_satisfaction_pct_std,total_unmet_energy_kwh_mean,total_unmet_energy_kwh_std,electricity_cost_mean,electricity_cost_std,runtime_seconds_mean,runtime_seconds_std,jains_fairness_index_mean,jains_fairness_index_std,max_capacity_violation_kw_mean,max_capacity_violation_kw_std,objective_value_mean,objective_value_std
+high_demand,PSO_fuzzy_urgency,10,3.5,4.743,217.114,28.055,109.95,4.519,11.375,0.633,0.91,0.018,0.0,0.0,10965.63,1399.421
+high_demand,PSO_proportional,10,6.0,6.583,221.394,25.021,108.441,4.007,3.557,0.205,0.868,0.022,0.0,0.0,11178.137,1248.748
+limited_capacity,PSO_fuzzy_urgency,10,3.0,4.216,190.201,24.631,62.401,2.547,14.14,2.451,0.87,0.026,0.0,0.0,9572.467,1229.706
+limited_capacity,PSO_proportional,10,5.5,5.986,192.958,22.573,61.645,2.435,4.223,0.605,0.817,0.028,0.0,0.0,9709.535,1127.273
+normal,PSO_fuzzy_urgency,10,99.5,1.581,0.056,0.178,69.381,5.511,5.608,1.446,1.0,0.0,0.0,0.0,72.193,10.766
+normal,PSO_proportional,10,100.0,0.0,0.001,0.002,70.045,6.793,2.839,0.273,1.0,0.0,0.0,0.0,70.073,6.861
+tight_deadlines,PSO_fuzzy_urgency,10,25.5,14.991,126.268,30.301,68.254,7.105,4.531,0.614,0.9,0.019,0.0,0.0,6381.64,1509.65
+tight_deadlines,PSO_proportional,10,22.0,9.775,128.982,28.992,67.724,6.761,2.219,0.195,0.892,0.018,0.0,0.0,6516.812,1444.887
